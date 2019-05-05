@@ -10,12 +10,12 @@ So far, the developed code isn't focused on the final game, but on it's componen
 
 The elements created to this point are:
 
-*The Hero: the main focus of the game. It's controlled by the user and used to navigate through the map. Initially has 3 lives and every time it loses one, has a short invulnerability time.
-*Walls: used to create the main frame of the map. Each wall is created separately, which allows to not only create the 4 outer walls but also to give more depth to the map.
-*Monsters: not very smart characters but still a threat. Only move from one side to another not taking in consideration the position of the hero and if this two meet in the same position, one life is taken away.
-*Wizards: move in a similar way to monsters but the threat they pose is their spells. One is shot every time there is a clear way to hit the hero, although after one is fired there's minimum time that has to pass after next one.
-*Items: extra lives and keys spread throughout the map.
-*The Gate: the final objective of the hero. Behaves just like a wall unless the hero has collected all the keys which allows the gate to be opened.
+* The Hero: the main focus of the game. It's controlled by the user and used to navigate through the map. Initially has 3 lives and every time it loses one, has a short invulnerability time.
+* Walls: used to create the main frame of the map. Each wall is created separately, which allows to not only create the 4 outer walls but also to give more depth to the map.
+* Monsters: not very smart characters but still a threat. Only move from one side to another not taking in consideration the position of the hero and if this two meet in the same position, one life is taken away.
+* Wizards: move in a similar way to monsters but the threat they pose is their spells. One is shot every time there is a clear way to hit the hero, although after one is fired there's minimum time that has to pass after next one.
+* Items: extra lives and keys spread throughout the map.
+* The Gate: the final objective of the hero. Behaves just like a wall unless the hero has collected all the keys which allows the gate to be opened.
 
 Screenshots:
 ![Screenshots 1](/Screenshots/screenshot1.png)
