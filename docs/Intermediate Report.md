@@ -18,9 +18,9 @@ The elements created to this point are:
 * The Gate: the final objective of the hero. Behaves just like a wall unless the hero has collected all the keys which allows the gate to be opened.
 
 Screenshots:
-![Screenshots 1](/Screenshots/screenshot1.png)
-![Screenshots 2](/Screenshots/screenshot2.png)
-![Screenshots 3](/Screenshots/screenshot3.png)
+![Screenshots 1](https://github.com/FEUP-LPOO/projecto-lpoo-2019-lpoo_212/blob/master/docs/Screenshots/screenshot1.png)
+![Screenshots 2](https://github.com/FEUP-LPOO/projecto-lpoo-2019-lpoo_212/blob/master/docs/Screenshots/screenshot2.png)
+![Screenshots 3](https://github.com/FEUP-LPOO/projecto-lpoo-2019-lpoo_212/blob/master/docs/Screenshots/screenshot3.png)
 
 ## Planned Features
 
