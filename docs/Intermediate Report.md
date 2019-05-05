@@ -1,4 +1,4 @@
-# LPOO_TG Project Name
+# LPOO_212 Castle Breakout
 
 In this platform game you can help our hero escape the castle by pulling the lever or collecting a key that opens the gates throughout three different levels in which you will encounter all kinds of foes, from always watchful guards to reckless ogres.
 
