@@ -1,6 +1,8 @@
-# LPOO_TG Project Name
+# LPOO_212 Castle Breakout
 
-> Include here one or two paragraphs explaining the main idea of the project, followed by a sentence identifying who the authors are. 
+In this platform game you can help our hero escape the castle by pulling the lever or collecting a key that opens the gates throughout three different levels in which you will encounter all kinds of foes, from always watchful guards to reckless ogres.
+
+This project was developed by Bernardo Santos (up201504711@fe.up.pt) and Filipe Almeida (up201708999@fe.up.pt) for LPOO 2018/19.
 
 ## Screenshots
 
