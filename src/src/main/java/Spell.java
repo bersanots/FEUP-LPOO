@@ -15,6 +15,8 @@ public class Spell extends Character{
         this.key = key;
     }
 
+    public int getSpeed(){return speed;}
+
     public void move(int time){
         if (time % speed == 0){
             switch (key) {

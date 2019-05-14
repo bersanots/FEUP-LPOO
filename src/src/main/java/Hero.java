@@ -39,8 +39,8 @@ public class Hero extends Character {
 
         int i = 0;
         while (i<lives){
-            screen.setCharacter((23+i)*2, 15, new TextCharacter('<'));
-            screen.setCharacter((23+i)*2 + 1, 15, new TextCharacter('3'));
+            screen.setCharacter((32+i)*2, 15, new TextCharacter('<'));
+            screen.setCharacter((32+i)*2 + 1, 15, new TextCharacter('3'));
             i++;
         }
 

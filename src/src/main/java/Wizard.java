@@ -58,11 +58,12 @@ public class Wizard extends Character {
             if (spell.testCollisions(walls,new KeyStroke(KeyType.ArrowRight))){
                 spell.move(time);
             }
-            else eraseSpell();
+            else eraseSpell(time);
         }
     }
 
-    public void eraseSpell(){
+    public void eraseSpell(int time){
+        if (time % spell.getSpeed() != 0) return;
         spell = null;
         spellFired = false;
     }

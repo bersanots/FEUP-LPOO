@@ -30,8 +30,8 @@ public class Game {
         screen.startScreen();             // screens must be started
         screen.doResizeIfNecessary();     // resize screen if necessary
 
-        hero = new Hero(10, 10);
-        gate = new Gate(3,5,20,20,3);
+        hero = new Hero(28, 19);
+        gate = new Gate(2,4,20,20,3);
         walls = new ArrayList<>();
         monsters =  new ArrayList<>();
         wizards = new ArrayList<>();
@@ -119,25 +119,33 @@ public class Game {
     public void createWalls(){
         Wall wall_1 = new Wall(1,1,1, 20);
         walls.add(wall_1);
-        Wall wall_2 = new Wall(20,20,1, 20);
+        Wall wall_2 = new Wall(30,30,1, 20);
         walls.add(wall_2);
-        Wall wall_3 = new Wall(2,19,1, 1);
+        Wall wall_3 = new Wall(2,29,1, 1);
         walls.add(wall_3);
-        Wall wall_4 = new Wall(2,19,20, 20);
+        Wall wall_4 = new Wall(2,29,20, 20);
         walls.add(wall_4);
-        Wall wall_5 = new Wall(2,10,5, 5);
+        Wall wall_5 = new Wall(5,5,10, 19);
         walls.add(wall_5);
-        Wall wall_6 = new Wall(13,19,8, 8);
+        Wall wall_6 = new Wall(2,8,7, 7);
         walls.add(wall_6);
-        Wall wall_7 = new Wall(10,10,11, 15);
+        Wall wall_7 = new Wall(26,26,5, 19);
         walls.add(wall_7);
+        Wall wall_8 = new Wall(15,15,2, 17);
+        walls.add(wall_8);
+        Wall wall_9 = new Wall(23,25,17, 17);
+        walls.add(wall_9);
+        Wall wall_10 = new Wall(23,23,15, 16);
+        walls.add(wall_10);
     }
 
     public void createMonsters(){
-        Monster monster_1 = new Monster(3,3, false, 50);
+        Monster monster_1 = new Monster(27,10, false, 20);
         monsters.add(monster_1);
-        Monster monster_2 = new Monster(3,10, true,20);
+        Monster monster_2 = new Monster(28,12, false,25);
         monsters.add(monster_2);
+        Monster monster_3 = new Monster(29,8, false,15);
+        monsters.add(monster_3);
     }
 
     public void createWizards(){
@@ -148,7 +156,7 @@ public class Game {
     public void createItems(){
         Item item_1 = new Life(19,19);
         items.add(item_1);
-        Item item_2 = new Key(4,15);
+        Item item_2 = new Key(29,2);
         items.add(item_2);
         Item item_3 = new Key(5,18);
         items.add(item_3);
@@ -235,7 +243,7 @@ public class Game {
         while (i < wizards.size()){
             if (wizards.get(i).getSpell() != null){
                 if (wizards.get(i).getSpell().getPos().equals(hero.getPos())){
-                    wizards.get(i).eraseSpell();
+                    wizards.get(i).eraseSpell(0);
                     return true;
                 }
             }
