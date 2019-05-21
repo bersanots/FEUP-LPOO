@@ -127,7 +127,7 @@ public class Game {
         walls.add(wall_4);
         Wall wall_5 = new Wall(5,5,10, 19);
         walls.add(wall_5);
-        Wall wall_6 = new Wall(2,8,7, 7);
+        Wall wall_6 = new Wall(2,12,7, 7);
         walls.add(wall_6);
         Wall wall_7 = new Wall(26,26,5, 19);
         walls.add(wall_7);
@@ -137,6 +137,32 @@ public class Game {
         walls.add(wall_9);
         Wall wall_10 = new Wall(23,23,15, 16);
         walls.add(wall_10);
+        Wall wall_11 = new Wall(22,22,7, 12);
+        walls.add(wall_11);
+        Wall wall_12 = new Wall(6,12,4, 4);
+        walls.add(wall_12);
+        Wall wall_13 = new Wall(12,12,5, 6);
+        walls.add(wall_13);
+        Wall wall_14 = new Wall(3,5,9, 9);
+        walls.add(wall_14);
+        Wall wall_15 = new Wall(9,9,8, 8);
+        walls.add(wall_15);
+        Wall wall_16 = new Wall(7,9,9, 9);
+        walls.add(wall_16);
+        Wall wall_17 = new Wall(8,14,17, 17);
+        walls.add(wall_17);
+        Wall wall_18 = new Wall(12,12,8, 14);
+        walls.add(wall_18);
+        Wall wall_19 = new Wall(8,11,14, 14);
+        walls.add(wall_19);
+        Wall wall_20 = new Wall(7,8,10, 10);
+        walls.add(wall_20);
+        Wall wall_21 = new Wall(6,10,12, 12);
+        walls.add(wall_21);
+        Wall wall_22 = new Wall(10,10,9, 9);
+        walls.add(wall_22);
+        Wall wall_23 = new Wall(10,10,11, 11);
+        walls.add(wall_23);
     }
 
     public void createMonsters(){
@@ -146,21 +172,49 @@ public class Game {
         monsters.add(monster_2);
         Monster monster_3 = new Monster(29,8, false,15);
         monsters.add(monster_3);
+        Monster monster_4 = new Monster(5,18, false,15);
+        monsters.add(monster_4);
+        Monster monster_5 = new Monster(25,18, false,15);
+        monsters.add(monster_5);
+        Monster monster_6 = new Monster(15,19, false,5);
+        monsters.add(monster_6);
+        Monster monster_7 = new Monster(13,6, false,50);
+        monsters.add(monster_7);
+        Monster monster_8 = new Monster(10,2, true,50);
+        monsters.add(monster_8);
+        Monster monster_9 = new Monster(10,4, true,50);
+        monsters.add(monster_9);
+        Monster monster_10 = new Monster(2,8, false,5);
+        monsters.add(monster_10);
+
     }
 
     public void createWizards(){
-        Wizard wizard_1 = new Wizard(15,15,false,40,10);
+        Wizard wizard_1 = new Wizard(15,15,false,40,5);
         wizards.add(wizard_1);
+        Wizard wizard_2 = new Wizard(18,8,false,35,5);
+        wizards.add(wizard_2);
+        Wizard wizard_3 = new Wizard(20,11,false,30,5);
+        wizards.add(wizard_3);
+        Wizard wizard_4 = new Wizard(23,8,false,35,5);
+        wizards.add(wizard_4);
+        Wizard wizard_5 = new Wizard(25,11,false,30,5);
+        wizards.add(wizard_5);
+        Wizard wizard_6 = new Wizard(2,4,true,30,5);
+        wizards.add(wizard_6);
+        Wizard wizard_7 = new Wizard(10,8,false,50,5);
+        wizards.add(wizard_7);
+
     }
 
     public void createItems(){
-        Item item_1 = new Life(19,19);
+        Item item_1 = new Life(25,16);
         items.add(item_1);
         Item item_2 = new Key(29,2);
         items.add(item_2);
-        Item item_3 = new Key(5,18);
+        Item item_3 = new Key(25,19);
         items.add(item_3);
-        Item item_4 = new Key(2,10);
+        Item item_4 = new Key(11,6);
         items.add(item_4);
     }
 

@@ -46,7 +46,7 @@ public class Hero extends Character {
 
         i = 0;
         while (i<keys){
-            screen.setCharacter((23+i)*2, 13, new TextCharacter('K'));
+            screen.setCharacter((32+i)*2, 13, new TextCharacter('K'));
             i++;
         }
     }
