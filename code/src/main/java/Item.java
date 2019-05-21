@@ -1,4 +1,4 @@
-import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.graphics.TextGraphics;
 
 public abstract class Item {
     private Position pos;
@@ -18,6 +18,6 @@ public abstract class Item {
         picked_up = true;
     }
 
-    public abstract void draw(Screen screen);
+    public abstract void draw(TextGraphics graphics);
     public abstract void add_to_hero(Hero hero);
 }

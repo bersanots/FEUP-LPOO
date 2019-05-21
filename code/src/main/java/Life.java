@@ -1,5 +1,7 @@
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Life extends Item{
     public Life(int x, int y) {
@@ -7,9 +9,11 @@ public class Life extends Item{
     }
 
     @Override
-    public void draw(Screen screen) {
+    public void draw(TextGraphics graphics) {
         if (!isPicked_up()){
-            screen.setCharacter(getPos().getX()*2, getPos().getY(), new TextCharacter('L'));
+            graphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+            graphics.enableModifiers(SGR.BOLD);
+            graphics.putString(new TerminalPosition(getPos().getX()*2, getPos().getY()), "L");
         }
     }
 

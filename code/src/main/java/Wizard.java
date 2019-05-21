@@ -1,4 +1,8 @@
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
@@ -124,12 +128,13 @@ public class Wizard extends Character {
         }
     }
 
-
     @Override
-    public void draw(Screen screen) {
+    public void draw(TextGraphics graphics) {
         if (spellFired)
-            spell.draw(screen);
-        screen.setCharacter(pos.getX()*2, pos.getY(), new TextCharacter('W'));
+            spell.draw(graphics);
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FF00FF"));
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(pos.getX()*2, pos.getY()), "W");
     }
 
     @Override

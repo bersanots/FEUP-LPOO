@@ -1,3 +1,4 @@
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;
 
@@ -26,7 +27,7 @@ public abstract class Character {
     }
 
 
-    public abstract void draw(Screen screen);
+    public abstract void draw(TextGraphics graphics);
 
     public Position getPos() {
         return pos;

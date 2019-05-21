@@ -1,7 +1,9 @@
-import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
 import java.util.List;
 
 import static com.googlecode.lanterna.input.KeyType.*;
@@ -56,10 +58,11 @@ public class Monster extends Character {
         }
     }
 
-
     @Override
-    public void draw(Screen screen) {
-        screen.setCharacter(pos.getX()*2, pos.getY(), new TextCharacter('M'));
+    public void draw(TextGraphics graphics) {
+        graphics.setForegroundColor(TextColor.Factory.fromString("#7CFC00"));
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(pos.getX()*2, pos.getY()), "M");
     }
 
     @Override

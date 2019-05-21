@@ -1,7 +1,8 @@
-import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
 
 import java.util.List;
 
@@ -37,8 +38,9 @@ public class Spell extends Character{
     }
 
     @Override
-    public void draw(Screen screen) {
-        screen.setCharacter(pos.getX()*2, pos.getY(), new TextCharacter('*'));
+    public void draw(TextGraphics graphics) {
+        graphics.setForegroundColor(TextColor.Factory.fromString("#EE82EE"));
+        graphics.putString(new TerminalPosition(pos.getX()*2, pos.getY()), "*");
     }
 
     @Override

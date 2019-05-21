@@ -1,5 +1,7 @@
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Key extends Item{
 
@@ -7,10 +9,11 @@ public class Key extends Item{
         super(x, y);
     }
 
-    @Override
-    public void draw(Screen screen) {
+    public void draw(TextGraphics graphics) {
         if (!isPicked_up()){
-            screen.setCharacter(getPos().getX()*2, getPos().getY(), new TextCharacter('K'));
+            graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+            graphics.enableModifiers(SGR.BOLD);
+            graphics.putString(new TerminalPosition(getPos().getX()*2, getPos().getY()), "K");
         }
     }
 
