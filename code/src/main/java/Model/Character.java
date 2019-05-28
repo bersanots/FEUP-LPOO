@@ -1,33 +1,41 @@
+package Model;
+
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
 
-import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 
 public abstract class Character {
     Position pos;
+    String img_path;
 
-    public Character(int x, int y){
-        pos = new Position(x,y);
+    public Character(int x, int y) {
+        pos = new Position(x, y);
+        img_path = "";
     }
 
-    public void moveUp(){
+    public void moveUp() {
         pos.setY(pos.getY() - 1);
     }
-    public void moveDown(){
+
+    public void moveDown() {
         pos.setY(pos.getY() + 1);
     }
-    public void moveLeft(){
+
+    public void moveLeft() {
         pos.setX(pos.getX() - 1);
     }
-    public void moveRight(){
+
+    public void moveRight() {
         pos.setX(pos.getX() + 1);
     }
 
 
     public abstract void draw(TextGraphics graphics);
+
+    public abstract void draw(MyComponent component, Graphics graphics);
 
     public Position getPos() {
         return pos;

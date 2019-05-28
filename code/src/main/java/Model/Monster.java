@@ -1,9 +1,13 @@
+package Model;
+
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
+
+import java.awt.*;
 import java.util.List;
 
 import static com.googlecode.lanterna.input.KeyType.*;
@@ -20,6 +24,7 @@ public class Monster extends Character {
         else
             key = ArrowRight;
         this.speed = speed;
+        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\monster.jpg";
     }
 
     public void move(int time){
@@ -63,6 +68,11 @@ public class Monster extends Character {
         graphics.setForegroundColor(TextColor.Factory.fromString("#7CFC00"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(pos.getX()*2, pos.getY()), "M");
+    }
+
+    @Override
+    public void draw(MyComponent component, Graphics graphics) {
+        component.paintComponent(graphics, pos.getX() * 20, pos.getY() * 20, img_path);
     }
 
     @Override

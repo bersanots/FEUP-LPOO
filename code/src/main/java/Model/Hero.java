@@ -1,9 +1,12 @@
+package Model;
+
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 
+import java.awt.*;
 import java.util.List;
 
 
@@ -17,6 +20,7 @@ public class Hero extends Character {
         lives = 3;
         invulnerable_time = 0;
         keys = 0;
+        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\hero.jpg";
     }
 
     public int getLives() {
@@ -51,7 +55,7 @@ public class Hero extends Character {
             graphics.enableModifiers(SGR.BOLD);
             graphics.putString(new TerminalPosition(pos.getX() * 2, pos.getY()), "H");
         } else {
-            if (invulnerable_time > 50 || (invulnerable_time > 30 && invulnerable_time <= 40) || (invulnerable_time > 10 && invulnerable_time <= 20)){
+            if (invulnerable_time > 50 || (invulnerable_time > 30 && invulnerable_time <= 40) || (invulnerable_time > 10 && invulnerable_time <= 20)) {
                 graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
                 graphics.enableModifiers(SGR.BOLD);
                 graphics.putString(new TerminalPosition(pos.getX() * 2, pos.getY()), "H");
@@ -72,6 +76,30 @@ public class Hero extends Character {
             graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
             graphics.enableModifiers(SGR.BOLD);
             graphics.putString(new TerminalPosition((32 + i) * 2, 13), "K");
+            i++;
+        }
+    }
+
+    @Override
+    public void draw(MyComponent component, Graphics graphics) {
+        if (invulnerable_time == 0) {
+            component.paintComponent(graphics, pos.getX(), pos.getY(), img_path);
+        } else {
+            if (invulnerable_time > 50 || (invulnerable_time > 30 && invulnerable_time <= 40) || (invulnerable_time > 10 && invulnerable_time <= 20)) {
+                component.paintComponent(graphics, pos.getX()*20, pos.getY()*20, img_path);
+            }
+            invulnerable_time--;
+        }
+
+        int i = 0;
+        while (i < lives) {
+            component.paintComponent(graphics, (32 + i) * 20, 15*20, "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\heart.jpg");
+            i++;
+        }
+
+        i = 0;
+        while (i < keys) {
+            component.paintComponent(graphics, (32 + i) * 20, 13*20, "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\key.jpg");
             i++;
         }
     }

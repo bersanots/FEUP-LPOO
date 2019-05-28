@@ -1,11 +1,13 @@
+package Model;
+
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
+
+import java.awt.*;
 import java.util.List;
 
 import static com.googlecode.lanterna.input.KeyType.*;
@@ -34,6 +36,8 @@ public class Wizard extends Character {
         this.spell_speed = spell_speed;
 
         spell_cooldown = 0;
+
+        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\wizard.jpg";
     }
 
     public Spell getSpell(){return spell;}
@@ -135,6 +139,13 @@ public class Wizard extends Character {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FF00FF"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(pos.getX()*2, pos.getY()), "W");
+    }
+
+    @Override
+    public void draw(MyComponent component, Graphics graphics) {
+        if (spellFired)
+            spell.draw(component, graphics);
+        component.paintComponent(graphics, pos.getX() * 20, pos.getY() * 20, img_path);
     }
 
     @Override

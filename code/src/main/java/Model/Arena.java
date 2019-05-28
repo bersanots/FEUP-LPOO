@@ -1,3 +1,5 @@
+package Model;
+
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -5,6 +7,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -188,38 +191,6 @@ public class Arena {
         items.add(item_4);
     }
 
-    public void drawWalls(TextGraphics graphics) {
-        int i = 0;
-        while (i < walls.size()) {
-            walls.get(i).draw(graphics);
-            i++;
-        }
-    }
-
-    public void drawItems(TextGraphics graphics) {
-        int i = 0;
-        while (i < items.size()) {
-            items.get(i).draw(graphics);
-            i++;
-        }
-    }
-
-    public void drawMonsters(TextGraphics graphics) {
-        int i = 0;
-        while (i < monsters.size()) {
-            monsters.get(i).draw(graphics);
-            i++;
-        }
-    }
-
-    public void drawWizards(TextGraphics graphics) {
-        int i = 0;
-        while (i < wizards.size()) {
-            wizards.get(i).draw(graphics);
-            i++;
-        }
-    }
-
     public void moveMonsters(int i) {
         int it = 0;
         while (it < monsters.size()) {
@@ -280,11 +251,28 @@ public class Arena {
     public void draw(TextGraphics graphics) {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
-        drawWalls(graphics);
+        for(Wall wall : walls)
+            wall.draw(graphics);
         gate.draw(graphics, hero);
-        drawItems(graphics);
-        drawWizards(graphics);
-        drawMonsters(graphics);
+        for(Item item : items)
+            item.draw(graphics);
+        for(Wizard wizard : wizards)
+            wizard.draw(graphics);
+        for(Monster monster : monsters)
+            monster.draw(graphics);
         hero.draw(graphics);
+    }
+
+    public void draw(MyComponent component, Graphics graphics) {
+        for(Wall wall : walls)
+            wall.draw(component, graphics);
+        gate.draw(component, graphics, hero);
+        for(Item item : items)
+            item.draw(component, graphics);
+        for(Wizard wizard : wizards)
+            wizard.draw(component, graphics);
+        for(Monster monster : monsters)
+            monster.draw(component, graphics);
+        hero.draw(component, graphics);
     }
 }

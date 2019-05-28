@@ -1,3 +1,5 @@
+package Model;
+
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -5,17 +7,21 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 import com.googlecode.lanterna.input.KeyStroke;
 
+import java.awt.*;
+
 public class Wall {
     int xi;
     int xf;
     int yi;
     int yf;
+    String img_path;
 
     public Wall(int xi, int xf, int yi, int yf){
         this.xf  = xf;
         this.yf  = yf;
         this.xi  = xi;
         this.yi  = yi;
+        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\wall.jpg";
     }
 
     public void draw(TextGraphics graphics) {
@@ -31,8 +37,20 @@ public class Wall {
             y = yi;
             x++;
         }
+    }
 
+    public void draw(MyComponent component, Graphics graphics) {
+        int x = xi;
+        int y = yi;
 
+        while(x <= xf){
+            while(y <= yf){
+                component.paintComponent(graphics, x*20, y*20, img_path);
+                y++;
+            }
+            y = yi;
+            x++;
+        }
     }
 
     public boolean testCollisions(Position pos, KeyStroke key){
