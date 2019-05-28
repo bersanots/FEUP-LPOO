@@ -89,6 +89,8 @@ public class Game {
             int i = 0;
             do {
                 sleep(330);
+                interf.setLives(arena.getHero().getLives());
+                interf.setKeys(arena.getHero().getKeys());
                 draw();
                 processKey(interf.getDirection(), i);
                 interf.resetDirection();

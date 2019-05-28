@@ -196,4 +196,5 @@ public class Swing extends Interface {
     public void setKeys(int n) {
         keys_num.setText(String.valueOf(n));
     }
+
 }

@@ -12,6 +12,8 @@ public abstract class Interface {
     private Screen screen;
     private JFrame frame;
     private MyComponent gameWindow;
+    private JLabel keys_num;
+    private JLabel lives_num;
     private KeyStroke direction;
 
     public Interface() {
@@ -35,5 +37,11 @@ public abstract class Interface {
 
     public void resetDirection() {
         direction = null;
+    }
+
+    public void setLives(int n) {
+    }
+
+    public void setKeys(int n) {
     }
 }

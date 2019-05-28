@@ -83,7 +83,7 @@ public class Hero extends Character {
     @Override
     public void draw(MyComponent component, Graphics graphics) {
         if (invulnerable_time == 0) {
-            component.paintComponent(graphics, pos.getX(), pos.getY(), img_path);
+            component.paintComponent(graphics, pos.getX()*20, pos.getY()*20, img_path);
         } else {
             if (invulnerable_time > 50 || (invulnerable_time > 30 && invulnerable_time <= 40) || (invulnerable_time > 10 && invulnerable_time <= 20)) {
                 component.paintComponent(graphics, pos.getX()*20, pos.getY()*20, img_path);
