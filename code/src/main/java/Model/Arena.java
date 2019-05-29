@@ -43,6 +43,7 @@ public class Arena {
     }
 
     public void processKey(KeyStroke key, int i) {
+        runArena(key, i);
         if (key != null) {
             switch (key.getKeyType()) {
                 case ArrowUp:
@@ -64,7 +65,6 @@ public class Arena {
             }
             System.out.println(key);
         }
-        runArena(key, i);
     }
 
     private void runArena(KeyStroke key, int i) {
@@ -250,6 +250,26 @@ public class Arena {
 
     public Hero getHero() {
         return hero;
+    }
+
+    public Gate getGate() {
+        return gate;
+    }
+
+    public List<Wall> getWalls() {
+        return walls;
+    }
+
+    public List<Monster> getMonsters() {
+        return monsters;
+    }
+
+    public List<Wizard> getWizards() {
+        return wizards;
+    }
+
+    public List<Item> getItems() {
+        return items;
     }
 
     public void draw(TextGraphics graphics) {

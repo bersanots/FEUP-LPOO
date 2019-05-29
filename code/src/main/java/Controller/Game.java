@@ -26,6 +26,14 @@ public class Game {
         this.arena = new Arena(100, 25);
     }
 
+    public Arena getArena() {
+        return arena;
+    }
+
+    public Interface getInterface() {
+        return interf;
+    }
+
     private void draw() throws IOException {
         if (interface_op == 1) {
             interf.getScreen().clear();
@@ -95,7 +103,7 @@ public class Game {
                 processKey(interf.getDirection(), i);
                 interf.resetDirection();
                 i++;
-            } while (!arena.isGameOver());
+            } while (!arena.isGameOver() && !interf.isWindowClosed());
         }
     }
 }

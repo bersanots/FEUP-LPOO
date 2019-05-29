@@ -6,10 +6,7 @@ import com.googlecode.lanterna.input.KeyType;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 public class Swing extends Interface {
 
@@ -26,6 +23,7 @@ public class Swing extends Interface {
     private JButton newGameButton;
     private JButton endGameButton;
     private KeyStroke direction;
+    private boolean closed_window = false;
 
     public Swing() {
         this.frame = new JFrame("Castle Breakout");
@@ -169,6 +167,13 @@ public class Swing extends Interface {
         };
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
 
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                closed_window = true;
+            }
+        });
+
         frame.pack();
         frame.setVisible(true);
     }
@@ -195,6 +200,10 @@ public class Swing extends Interface {
 
     public void setKeys(int n) {
         keys_num.setText(String.valueOf(n));
+    }
+
+    public boolean isWindowClosed() {
+        return closed_window;
     }
 
 }

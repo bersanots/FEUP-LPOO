@@ -44,4 +44,8 @@ public abstract class Interface {
 
     public void setKeys(int n) {
     }
+
+    public boolean isWindowClosed() {
+        return false;
+    }
 }
