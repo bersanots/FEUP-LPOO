@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.4.0'
 }
 
 application {
@@ -19,4 +20,8 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.0.1'
+}
+
+pitest {
+    targetClasses = ['com.bersanots.hero.hero.main.java.*']
 }

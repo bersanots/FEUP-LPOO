@@ -139,11 +139,12 @@ Introduce Null Object: creating a class called NullSpell that extends Spell will
 
 ## Testing Results
 
-> This section should contain screenshots of the main results of both the test coverage and mutation testing reports. It should also contain links to those reports in HTML format (you can copy the reports to the docs folder).
+Code coverage:
+![Coverage](https://github.com/FEUP-LPOO/projecto-lpoo-2019-lpoo_212/blob/master/docs/Screenshots/test_coverage.png)
 
 ## Self-evaluation
 
-* Bernardo Santos: Review of the code structure to CMV pattern to allow the usage of Swing and it's implementation. Creation of the tests.
+* Bernardo Santos: Review of the code structure to CMV pattern to allow the usage of Swing and its implementation. Creation of the tests.
 * Filipe Almeida: Creation of the game logic and initial Strategy structure to work on Lanterna. Construction of the levels.
 
 Both students contributed to the code organization and good object oriented design practices during the project.
