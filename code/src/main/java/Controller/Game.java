@@ -16,6 +16,7 @@ public class Game {
     private int interface_op;
     private Interface interf;
     private Arena arena;
+    int level;
 
     public Game(int interface_op) throws IOException {
         this.interface_op = interface_op;
@@ -23,7 +24,8 @@ public class Game {
             this.interf = new Lanterna();
         else
             this.interf = new Swing();
-        this.arena = new Arena(100, 25);
+        this.level = 1;
+        this.arena = new Arena(100, 25, level);
     }
 
     public Arena getArena() {
@@ -48,7 +50,50 @@ public class Game {
         arena.processKey(key, i);
     }
 
+    private void endingMessage(boolean hasWon) throws IOException, InterruptedException {
+        if (interface_op == 1) {
+            interf.getScreen().clear();
+            if (hasWon) {
+                interf.getScreen().setCharacter(10, 10, new TextCharacter('G'));
+                interf.getScreen().setCharacter(11, 10, new TextCharacter('A'));
+                interf.getScreen().setCharacter(12, 10, new TextCharacter('M'));
+                interf.getScreen().setCharacter(13, 10, new TextCharacter('E'));
+                interf.getScreen().setCharacter(14, 10, new TextCharacter(' '));
+                interf.getScreen().setCharacter(15, 10, new TextCharacter('W'));
+                interf.getScreen().setCharacter(16, 10, new TextCharacter('O'));
+                interf.getScreen().setCharacter(17, 10, new TextCharacter('N'));
+            } else {
+                interf.getScreen().setCharacter(10, 10, new TextCharacter('G'));
+                interf.getScreen().setCharacter(11, 10, new TextCharacter('A'));
+                interf.getScreen().setCharacter(12, 10, new TextCharacter('M'));
+                interf.getScreen().setCharacter(13, 10, new TextCharacter('E'));
+                interf.getScreen().setCharacter(14, 10, new TextCharacter(' '));
+                interf.getScreen().setCharacter(15, 10, new TextCharacter('L'));
+                interf.getScreen().setCharacter(16, 10, new TextCharacter('O'));
+                interf.getScreen().setCharacter(17, 10, new TextCharacter('S'));
+                interf.getScreen().setCharacter(18, 10, new TextCharacter('T'));
+            }
+            interf.getScreen().refresh();
+            sleep(2000);
+            interf.getScreen().close();
+        } else {
+            interf.gameEndingMessage(hasWon);
+        }
+    }
+
     public void run() throws IOException, InterruptedException {
+        while (level < 3) {
+            this.arena = new Arena(100, 25, level);
+            if (!run_level()) {
+                endingMessage(false);
+                return;
+            }
+            level++;
+        }
+        endingMessage(true);
+    }
+
+    public boolean run_level() throws IOException, InterruptedException {
         if (interface_op == 1) {
             KeyStroke key;
             int i = 0;
@@ -59,39 +104,11 @@ public class Game {
                 if (key != null)
                     if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') {
                         interf.getScreen().close();
-                        return;
+                        return false;
                     }
                 processKey(key, i);
                 i++;
             } while ((key == null || key.getKeyType() != KeyType.EOF) && !arena.isGameOver());
-
-            if (arena.hasWon()) {
-                interf.getScreen().clear();
-                interf.getScreen().setCharacter(10, 15, new TextCharacter('G'));
-                interf.getScreen().setCharacter(11, 15, new TextCharacter('A'));
-                interf.getScreen().setCharacter(12, 15, new TextCharacter('M'));
-                interf.getScreen().setCharacter(13, 15, new TextCharacter('E'));
-                interf.getScreen().setCharacter(14, 15, new TextCharacter(' '));
-                interf.getScreen().setCharacter(15, 15, new TextCharacter('W'));
-                interf.getScreen().setCharacter(16, 15, new TextCharacter('O'));
-                interf.getScreen().setCharacter(17, 15, new TextCharacter('N'));
-                interf.getScreen().refresh();
-                sleep(1000);
-            } else {
-                interf.getScreen().clear();
-                interf.getScreen().setCharacter(10, 15, new TextCharacter('Y'));
-                interf.getScreen().setCharacter(11, 15, new TextCharacter('O'));
-                interf.getScreen().setCharacter(12, 15, new TextCharacter('U'));
-                interf.getScreen().setCharacter(13, 15, new TextCharacter(' '));
-                interf.getScreen().setCharacter(14, 15, new TextCharacter('L'));
-                interf.getScreen().setCharacter(15, 15, new TextCharacter('O'));
-                interf.getScreen().setCharacter(16, 15, new TextCharacter('S'));
-                interf.getScreen().setCharacter(17, 15, new TextCharacter('T'));
-                interf.getScreen().refresh();
-                sleep(1000);
-            }
-
-            interf.getScreen().close();
 
         } else {
             int i = 0;
@@ -105,5 +122,7 @@ public class Game {
                 i++;
             } while (!arena.isGameOver() && !interf.isWindowClosed());
         }
+
+        return arena.hasWon();
     }
 }

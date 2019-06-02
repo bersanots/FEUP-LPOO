@@ -16,12 +16,12 @@ public class Swing extends Interface {
     private JLabel keys_num;
     private JLabel livesLabel;
     private JLabel lives_num;
+    private JLabel you_won;
+    private JLabel you_lost;
     private JButton upButton;
     private JButton downButton;
     private JButton leftButton;
     private JButton rightButton;
-    private JButton newGameButton;
-    private JButton endGameButton;
     private KeyStroke direction;
     private boolean closed_window = false;
 
@@ -70,6 +70,22 @@ public class Swing extends Interface {
         c.gridx = 5;
         c.gridy = 1;
         frame.getContentPane().add(lives_num, c);
+
+        you_won = new JLabel("YOU WON");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(5, 10, 10, 10);
+        c.gridx = 0;
+        c.gridy = 3;
+        frame.getContentPane().add(you_won, c);
+        you_won.setVisible(false);
+
+        you_lost = new JLabel("YOU LOST");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(5, 10, 10, 10);
+        c.gridx = 0;
+        c.gridy = 4;
+        frame.getContentPane().add(you_lost, c);
+        you_lost.setVisible(false);
 
 
         //Buttons
@@ -204,6 +220,13 @@ public class Swing extends Interface {
 
     public boolean isWindowClosed() {
         return closed_window;
+    }
+
+    public void gameEndingMessage(boolean hasWon) {
+        if (hasWon)
+            you_won.setVisible(true);
+        else
+            you_lost.setVisible(true);
     }
 
 }

@@ -48,4 +48,7 @@ public abstract class Interface {
     public boolean isWindowClosed() {
         return false;
     }
+
+    public void gameEndingMessage(boolean hasWon) {
+    }
 }
