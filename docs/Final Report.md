@@ -6,9 +6,9 @@ This project was developed by Bernardo Santos (up201504711@fe.up.pt) and Filipe 
 
 ## Implemented Features
 
-So far, the developed code isn't focused on the final game, but on it's components. Several classes were created to represent each element of the game and the way they interact with each other.
+The game has two levels. The first one has a small amount of enemies and a lot of free space, allowing the user to first get used with the controls and all the obstacles. The second level it's a lot harder, meat to be a challenge for the user to put in practise all he learned from the first level.
 
-The elements created to this point are:
+In each level, the elements found are:
 
 * The Hero: the main focus of the game. It's controlled by the user and used to navigate through the map. Initially has 3 lives and every time it loses one, has a short invulnerability time.
 * Walls: used to create the main frame of the map. Each wall is created separately, which allows to not only create the 4 outer walls but also to give more depth to the map.
@@ -24,21 +24,50 @@ Screenshots:
 
 ## Planned Features
 
-Although not yed decided exactly what, we´re still looking to add new elements to the game. This could be new characters that have different interactions or by creating traps. There is still the possibility to give the hero new abilities or powers, but it's yet to be decided.
+With the project finished, some ideas were abandoned because of the lack of time. Here are some examples:
+* New obstacles. This could be new characters that have different interactions or by creating traps.
+* Give the hero more options. There is still the possibility to give the hero new abilities or powers.
+* Better menus. The game could have the possibility to chose which level you want to play or to quit te game.
 
-The most important part that is still left to be created is the actual game. All the classes are developed in a way that allows the final process to simply be assembling all the pieces. Despite that, this part should also be done carefully because it's going to determine the game's playability and difficulty.
-
-Another feature to be implemented are all the menus as well as a way to access different levels that is still to be decided.
-
-To the point of this report, the game is being developed using lanterna and letters to represent the different objects of the game, but it shouldn't be very hard to use another graphical interface, since all the functions that take care of the visual part are being separated from the other methods.
-
-Despite the fact that we are trying to have good coding practices from the start, it's very likely that we'll find some SOLID violations or Code Smells along the way. We've decided to go over this after the game is fully working although acknowledging that it is one of the most important parts.
-
-Note: The screen that appears if the hero gets to the gate that says "GAME WON" is only for testing purposes and will be completely removed.
 
 ## Design
 
-> This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts: "Problem in Context", "The Pattern", "Implementation" and "Consequences".
+### Strategy
+#### Problem in Context
+To begin coding our project, it was decided that there was a necessity to create multiple classes to represent the different elements. It seemed very evident that a lot of this classes would only differ on their behaviour and shared a lot with each other.
+
+#### The Pattern
+
+After studying the situation carefully, the design that seemed to be more suited was the Strategy pattern. By allowing the game loop to instruct a class to move and it's action depending on the class they represent, we would be creating a more organized way to have characters with different behaviors.
+
+#### Implementation
+
+For the implementation part of the problem, the base was to create a class Character. Each character would have his current position and abstract methods to move and draw itself. Upon the creation of a new character, those methods would be overridden to to change their movement and appearance.
+
+#### Consequences
+
+This allowed the code to be structured and facilitated the creation of new elements. However it came with the drawback of forcing the game's main loop to be aware of all the different elements increasing it's complexity.
+
+
+### Model-View-Controller (MVC)
+#### Problem in Context
+
+Initially the code was thought out to use only Lanterna. This turned out to be a problem when trying to fill the requirement for it to also work whit Swing. So we it was decided that some major changes to the overall structure of the code were necessary.
+
+#### The Pattern
+
+The pattern followed to review the code was the MVC. This was the obvious choice since it would allow the functions that deal with the visual part to be modified and work with the chosen graphics mode and not force any changes to the logical part of the game.
+
+#### Implementation
+
+To implement the new design pattern, the classes were divided into tree different groups: the Controller, the Model, and the View. The controller group consists in class Game that coordinated all the elements and the group model has all the classes that represent the components of the game. These groups only needed changes to the functions that take care of the visual part.
+The main new components that were created are in the view group. The creation of new classes that allow both Swing and Lanterna to be used was necessary to be able to make use of all the changes.
+
+#### Consequences
+
+The usage of this mew architecture allows for a much easier way to display the game in different ways but one problem that was noticed right away was that it can bring some issues regarding the efficiency of the code. Although not very noticeable with Lanterna, with Swing the game was running at a much slower pace.
+
+
 
 ### Classes
 #### Game
@@ -92,7 +121,21 @@ Represents a Key the hero can get.
 
 ## Known Code Smells and Refactoring Suggestions
 
-> This section should describe 3 to 5 different code smells that you have identified in your current implementation, and suggest ways in which the code could be refactored to eliminate them. Each smell and refactoring suggestions should be described in its own subsection.
+### Duplicate Code
+In the function processKey from the class Arena, its possible to see that there is some repeated code inside the case statements, used to move the hero for the selected direction if possible.
+#### Refactoring Suggestion
+Consolidate Duplicate Conditional Fragments: the code should use the switch only to determine the direction of the key pressed and only after try to actually move the hero.
+
+### Long Method
+In the function testPath from the class Wall, there are some if statements that make the method seem very long and complicated.
+#### Refactoring Suggestion
+Decompose Conditional: by rearranging some of the conditions into groups, it would be possible to shorten the code and make it easier to understand.
+
+### Temporary Field
+In the class Wizard, the spell attribute only exists if one is being fired, therefore it only gets it's value under certain circumstances.
+#### Refactoring Suggestion
+Introduce Null Object: creating a class called NullSpell that extends Spell will allow this variable to be assigned a proper value when a spell doesn't actually exist.
+
 
 ## Testing Results
 
@@ -100,4 +143,7 @@ Represents a Key the hero can get.
 
 ## Self-evaluation
 
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
+* Bernardo Santos: Review of the code structure to CMV pattern to allow the usage of Swing and it's implementation. Creation of the tests.
+* Filipe Almeida: Creation of the game logic and initial Strategy structure to work on Lanterna. Construction of the levels.
+
+Both students contributed to the code organization and good object oriented design practices during the project.
