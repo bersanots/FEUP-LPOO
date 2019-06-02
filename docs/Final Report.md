@@ -140,7 +140,7 @@ Introduce Null Object: creating a class called NullSpell that extends Spell will
 ## Testing Results
 
 Code coverage:
-![Coverage](https://github.com/FEUP-LPOO/projecto-lpoo-2019-lpoo_212/blob/master/docs/Screenshots/test_coverage.png)
+![Coverage](https://github.com/FEUP-LPOO/projecto-lpoo-2019-lpoo_212/blob/master/docs/Screenshots/test_coverage.PNG)
 
 ## Self-evaluation
 
