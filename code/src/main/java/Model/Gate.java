@@ -7,14 +7,21 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 
 import java.awt.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Gate extends Wall {
     int n_keys;
+    private String floor_img_path;
 
     public Gate(int xi, int xf, int yi, int yf, int n_keys) {
         super(xi, xf, yi, yf);
         this.n_keys = n_keys;
-        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\gate.jpg";
+
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        img_path = s + "\\src\\main\\resources\\gate.jpg";
+        floor_img_path = s + "\\src\\main\\resources\\floor.jpg";
     }
 
     public boolean openGate(Hero hero, KeyStroke key) {
@@ -53,7 +60,7 @@ public class Gate extends Wall {
                 if (hero.getKeys() < n_keys) {
                     component.paintComponent(graphics, x * 20, y * 20, img_path);
                 } else
-                    component.paintComponent(graphics, x * 20, y * 20, "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\floor.jpg");
+                    component.paintComponent(graphics, x * 20, y * 20, floor_img_path);
                 y++;
             }
             y = yi;

@@ -8,6 +8,8 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 
 import java.awt.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static com.googlecode.lanterna.input.KeyType.*;
@@ -24,7 +26,9 @@ public class Monster extends Character {
         else
             key = ArrowRight;
         this.speed = speed;
-        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\monster.jpg";
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        img_path = s + "\\src\\main\\resources\\monster.jpg";
     }
 
     public void move(int time){

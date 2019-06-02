@@ -7,6 +7,8 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 
 import java.awt.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class Spell extends Character{
@@ -17,7 +19,9 @@ public class Spell extends Character{
         super(x, y);
         this.speed = speed;
         this.key = key;
-        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\spell.jpg";
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        img_path = s + "\\src\\main\\resources\\spell.jpg";
     }
 
     public int getSpeed(){return speed;}

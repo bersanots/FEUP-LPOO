@@ -6,12 +6,16 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.awt.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Key extends Item{
 
     public Key(int x, int y) {
         super(x, y);
-        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\key.jpg";
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        img_path = s + "\\src\\main\\resources\\key.jpg";
     }
 
     public void draw(TextGraphics graphics) {

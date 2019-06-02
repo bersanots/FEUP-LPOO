@@ -7,6 +7,8 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 
 import java.awt.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 
@@ -14,13 +16,20 @@ public class Hero extends Character {
     private int lives;
     private int keys;
     private int invulnerable_time;
+    private String key_img_path;
+    private String heart_img_path;
 
     public Hero(int x, int y) {
         super(x, y);
         lives = 3;
         invulnerable_time = 0;
         keys = 0;
-        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\hero.jpg";
+
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        img_path = s + "\\src\\main\\resources\\hero.jpg";
+        key_img_path = s + "\\src\\main\\resources\\key.jpg";
+        heart_img_path = s + "\\src\\main\\resources\\heart.jpg";
     }
 
     public int getLives() {
@@ -93,13 +102,13 @@ public class Hero extends Character {
 
         int i = 0;
         while (i < lives) {
-            component.paintComponent(graphics, (32 + i) * 20, 15*20, "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\heart.jpg");
+            component.paintComponent(graphics, (32 + i) * 20, 15*20, heart_img_path);
             i++;
         }
 
         i = 0;
         while (i < keys) {
-            component.paintComponent(graphics, (32 + i) * 20, 13*20, "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\key.jpg");
+            component.paintComponent(graphics, (32 + i) * 20, 13*20, key_img_path);
             i++;
         }
     }

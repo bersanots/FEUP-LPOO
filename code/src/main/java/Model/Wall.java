@@ -8,6 +8,8 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 
 import java.awt.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Wall {
     int xi;
@@ -21,7 +23,9 @@ public class Wall {
         this.yf  = yf;
         this.xi  = xi;
         this.yi  = yi;
-        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\wall.jpg";
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        img_path = s + "\\src\\main\\resources\\wall.jpg";
     }
 
     public void draw(TextGraphics graphics) {

@@ -8,6 +8,8 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 
 import java.awt.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static com.googlecode.lanterna.input.KeyType.*;
@@ -37,7 +39,9 @@ public class Wizard extends Character {
 
         spell_cooldown = 0;
 
-        img_path = "C:\\Users\\berna\\Documents\\GitHub\\projecto-lpoo-2019-lpoo_212\\code\\src\\main\\resources\\wizard.jpg";
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        img_path = s + "\\src\\main\\resources\\wizard.jpg";
     }
 
     public Spell getSpell(){return spell;}
