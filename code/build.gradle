@@ -22,6 +22,9 @@ dependencies {
     compile group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.0.1'
 }
 
-pitest {
-    targetClasses = ['com.bersanots.hero.hero.main.java.*']
-}
+pitest
+        {
+            println sourceSets.main
+            targetClasses = ['*Main*']  //by default "${project.group}.*"
+            targetTests  = ['*Test*']
+        }
